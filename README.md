@@ -22,3 +22,6 @@ npm run build
 ```shell
 npm start
 ```
+
+database user's credentials
+teyavorska EvV3t1bKRhnrGaB5
