@@ -1,29 +1,33 @@
 import React from 'react';
 import { BiLogOut, BiUser } from 'react-icons/bi';
-import { useModal } from '../../components/ui/modal/hooks/useModal';
+import { useDispatch } from 'react-redux';
+import { openModal } from '../../store/redux/modalSlice';
 import Dropdown, { Option } from '../../components/ui/dropdown/Dropdown';
 import EditAccountModal from './edit-account/modals/EditAccountModal';
 import useLogout from './loguot/hooks/useLogout';
-import useEditAccount from './edit-account/hooks/useEditAccount';
 
+export const EDIT_ACCOUNT_MODAL_KEY = 'edit-account';
 const AccountManagementButton = () => {
-  const { openModal } = useModal();
   const { logout } = useLogout();
-  const { editAccount } = useEditAccount();
+
+  const dispatch = useDispatch();
+
+  const openEditAccountModal = () => {
+    dispatch(
+      openModal({
+        title: 'Edit Account',
+        content: EDIT_ACCOUNT_MODAL_KEY,
+        // isControlled: true,
+      })
+    );
+  };
 
   const options: Option[] = [
     {
       id: 'edit-account',
       icon: <BiUser className="w-4 h-4" />,
       label: 'Edit Account',
-      action: () =>
-        openModal({
-          title: 'Edit Account',
-          content: <EditAccountModal />,
-          confirmText: 'Save',
-          cancelText: 'Cancel',
-          onConfirm: (data: any) => editAccount(data),
-        }),
+      action: openEditAccountModal,
     },
     {
       id: 'logout',

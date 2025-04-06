@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import { setAuthUser } from '../../../../store/redux/authSlice';
 
 interface EditAccountParams {
-  email: string;
-  pass: string;
+  email?: string;
+  pass?: string;
 }
 
 const useEditAccount = () => {
@@ -16,7 +16,7 @@ const useEditAccount = () => {
 
   const editAccount = async ({ email, pass }: EditAccountParams) => {
     if (!email || !pass) {
-      toast.error('Please fill in all fields');
+      toast.error('Please fill the fields');
       return;
     }
 

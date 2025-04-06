@@ -8,6 +8,7 @@ import SignUp from './pages/signup/SignUp';
 import './App.css';
 import { useSelector } from 'react-redux';
 import { RootState } from './store/redux';
+import Modal from './components/ui/modal/Modal';
 
 const App = () => {
   // const { authUser } = useAuthStore();
@@ -30,6 +31,7 @@ const App = () => {
         />
       </Routes>
       <Toaster />
+      <Modal />
     </div>
   );
 };
